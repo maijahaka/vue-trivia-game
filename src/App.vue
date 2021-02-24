@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Header title="Vue Trivia Game"/>
+    <app-header title="Vue Trivia Game"/>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
+import AppHeader from './components/AppHeader.vue'
 
 export default {
   name: 'App',
   components: {
-    Header
+    AppHeader
   }
 }
 </script>
