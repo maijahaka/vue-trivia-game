@@ -26,7 +26,6 @@ export default {
         // TODO move script to a separate file?
         // TODO error handling
         // TODO use async/await syntax?
-        // TODO encoding problem with apostrophes and quotation marks
         axios
             .get('https://opentdb.com/api.php?amount=10&category=22&difficulty=easy')
             .then(response => {

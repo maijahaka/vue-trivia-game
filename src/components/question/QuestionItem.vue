@@ -1,29 +1,31 @@
 <template>
   <div>
-    <question-header :question="questionItem.question" />
-    <div v-if="questionItem.type === 'boolean'">
-      <boolean-question />
-    </div>
-    <div v-if="questionItem.type === 'multiple'">
-      <multiple-choice-question
-        :correct-answer="questionItem.correct_answer" 
-        :incorrect-answers="questionItem.incorrect_answers"
-      />
-    </div>
+    <question :question="questionItem.question" />
+    <answer v-for="(answer, index) of answerOptions" :key="index" :answer="answer" />
   </div>
 </template>
 
 <script>
-import QuestionHeader from './QuestionHeader'
-import BooleanQuestion from './BooleanQuestion'
-import MultipleChoiceQuestion from './MultipleChoiceQuestion'
+import _ from 'lodash'
+import Question from './Question'
+import Answer from './Answer.vue'
 
 export default {
   name: 'QuestionItem',
   components: {
-    QuestionHeader,
-    BooleanQuestion,
-    MultipleChoiceQuestion
+    Question,
+    Answer
+  },
+  computed: {
+    answerOptions() {
+      if (this.questionItem.type === 'boolean') {
+        return ["True", "False"]
+      }
+
+      let options = this.questionItem.incorrect_answers
+      options.push(this.questionItem.correct_answer)
+      return _.shuffle(options)
+    }
   },
   props: {
     questionItem: {
