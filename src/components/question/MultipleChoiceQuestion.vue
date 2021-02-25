@@ -11,8 +11,14 @@
 export default {
     name: 'MultipleChoiceQuestion',
     props: {
-        correctAnswer: String,
-        incorrectAnswers: Array
+        correctAnswer: { 
+          type: String,
+          required: true
+        },
+        incorrectAnswers: {
+          type: Array,
+          required: true
+        }
     }
 }
 </script>

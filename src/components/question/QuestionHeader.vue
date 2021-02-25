@@ -8,7 +8,10 @@
 export default {
   name: 'QuestionHeader',
   props: {
-    question: String
+    question: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>
