@@ -9,8 +9,8 @@
           <!--TODO pass correct answer-->
           <div v-if="questionItem.type === 'multiple'">
             <multiple-choice-question
-              :correctAnswer="questionItem.correct_answer" 
-              :incorrectAnswers="questionItem.incorrect_answers"
+              :correct-answer="questionItem.correct_answer" 
+              :incorrect-answers="questionItem.incorrect_answers"
             />
           </div>
           <!--TODO question number, e.g. 1/10-->
