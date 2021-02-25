@@ -1,18 +1,7 @@
 <template>
   <div>
       <div v-for="(questionItem, index) of questionItems" :key="index">
-          <question-header :question="questionItem.question" />
-          <!--TODO pass correct answer-->
-          <div v-if="questionItem.type === 'boolean'">
-            <boolean-question />
-          </div>
-          <!--TODO pass correct answer-->
-          <div v-if="questionItem.type === 'multiple'">
-            <multiple-choice-question
-              :correct-answer="questionItem.correct_answer" 
-              :incorrect-answers="questionItem.incorrect_answers"
-            />
-          </div>
+          <question-item :question-item="questionItem" />
           <!--TODO question number, e.g. 1/10-->
       </div>
   </div>
@@ -20,16 +9,12 @@
 
 <script>
 import axios from 'axios'
-import QuestionHeader from '../components/question/QuestionHeader.vue'
-import BooleanQuestion from '../components/question/BooleanQuestion.vue'
-import MultipleChoiceQuestion from '../components/question/MultipleChoiceQuestion.vue'
+import QuestionItem from '../components/question/QuestionItem.vue'
 
 export default {
     name: 'QuestionView',
     components: { 
-        QuestionHeader,
-        BooleanQuestion,
-        MultipleChoiceQuestion 
+        QuestionItem
     },
     data() {
         return {
