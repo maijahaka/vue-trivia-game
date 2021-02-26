@@ -1,7 +1,13 @@
 <template>
   <div>
     <question :question="questionItem.question" />
-    <answer v-for="(answer, index) of answerOptions" :key="index" :answer="answer" />
+    <answer 
+      v-for="(answer, index) of answerOptions" 
+      :key="index" 
+      :answer="answer" 
+      @selected-answer="handleAnswerSelected"
+    />
+    <div>Question {{id}}/{{numberOfQuestions}}</div>
   </div>
 </template>
 
@@ -9,6 +15,7 @@
 import _ from 'lodash'
 import Question from './Question'
 import Answer from './Answer.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'QuestionItem',
@@ -17,6 +24,14 @@ export default {
     Answer
   },
   computed: {
+    ...mapGetters(['numberOfQuestions']),
+    id() {
+      const { id } = this.$route.params
+      return id      
+    },
+    questionItem() {
+        return this.$store.getters.getQuestionItemByIndex(this.id - 1)
+    },
     answerOptions() {
       if (this.questionItem.type === 'boolean') {
         return ["True", "False"]
@@ -27,14 +42,15 @@ export default {
       return _.shuffle(options)
     }
   },
-  data() {
-      return {
-          questionItem: {"category":"Geography","type":"multiple","difficulty":"easy","question":"Which country does Austria not border?","correct_answer":"France","incorrect_answers":["Slovenia","Switzerland","Slovakia"]}
+  methods: {
+    handleAnswerSelected(answer) {
+      console.log(answer)
+      if (this.id < this.numberOfQuestions) {
+        this.$router.push(`/questions/${Number(this.id) + 1}`)
+      } else {
+        this.$router.push('/results')
       }
-  },
-  created() {
-    const { id } = this.$route.params
-    return id
+    }
   }
 }
 </script>

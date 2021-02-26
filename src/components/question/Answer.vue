@@ -1,6 +1,6 @@
 <template>
   <!--TODO add handler-->
-  <button>{{ decodedAnswer }}</button>
+  <button @click="onAnswerClicked">{{ decodedAnswer }}</button>
 </template>
 
 <script>
@@ -17,6 +17,11 @@ export default {
     answer: {
       type: String,
       required: true
+    }
+  },
+  methods: {
+    onAnswerClicked() {
+      this.$emit('selected-answer', this.answer)
     }
   }
 }
