@@ -27,11 +27,14 @@ export default {
       return _.shuffle(options)
     }
   },
-  props: {
-    questionItem: {
-      type: Object,
-      required: true
-    }
+  data() {
+      return {
+          questionItem: {"category":"Geography","type":"multiple","difficulty":"easy","question":"Which country does Austria not border?","correct_answer":"France","incorrect_answers":["Slovenia","Switzerland","Slovakia"]}
+      }
+  },
+  created() {
+    const { id } = this.$route.params
+    return id
   }
 }
 </script>

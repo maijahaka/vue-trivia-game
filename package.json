@@ -12,7 +12,9 @@
     "core-js": "^3.6.5",
     "he": "^1.2.0",
     "lodash": "^4.17.21",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
