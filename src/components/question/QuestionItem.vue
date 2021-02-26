@@ -44,7 +44,8 @@ export default {
   },
   methods: {
     handleAnswerSelected(answer) {
-      console.log(answer)
+      this.questionItem.selectedAnswer = answer
+      console.log(this.questionItem.correct_answer === this.questionItem.selectedAnswer)
       if (this.id < this.numberOfQuestions) {
         this.$router.push(`/questions/${Number(this.id) + 1}`)
       } else {
