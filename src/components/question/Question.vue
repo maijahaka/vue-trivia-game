@@ -6,18 +6,19 @@
 import { decode } from 'he'
 
 export default {
-  name: 'Question',
-  computed: {
-    decodedQuestion() {
-      return decode(this.question)
+    name: 'Question',
+    props: {
+        question: {
+            type: String,
+            required: true
+        }
+    },
+    computed: {
+        decodedQuestion() {
+            // decode HTML encoded values returned by the API
+            return decode(this.question)
+        }
     }
-  },
-  props: {
-    question: {
-      type: String,
-      required: true
-    }
-  }
 }
 </script>
 

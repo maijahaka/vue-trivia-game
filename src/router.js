@@ -21,7 +21,8 @@ const routes = [
     }
 ]
 
-const router = new VueRouter({ 
+const router = new VueRouter({
+    // abstract mode to prevent URL changes in the address bar
     mode: 'abstract',
     routes })
 

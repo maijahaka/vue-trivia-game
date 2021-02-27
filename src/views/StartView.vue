@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button @click="onStartGameClicked">Start Game</button>
+    <button @click="onStartGameClicked">
+      Start Game
+    </button>
   </div>
 </template>
 
@@ -8,14 +10,16 @@
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'StartView',
-  methods: {
-    async onStartGameClicked() {
-        await this.fetchQuestionItems()
-        this.$router.push('/questions/1')
-    },
-    ...mapActions(['fetchQuestionItems'])
-  }
+    name: 'StartView',
+    methods: {
+        async onStartGameClicked() {
+            // fetch questions from the API
+            await this.fetchQuestionItems()
+            // move to the first question
+            this.$router.push('/questions/1')
+        },
+        ...mapActions(['fetchQuestionItems'])
+    }
 
 }
 </script>

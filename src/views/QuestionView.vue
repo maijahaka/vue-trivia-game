@@ -9,7 +9,7 @@ import QuestionItem from '../components/question/QuestionItem.vue'
 
 export default {
     name: 'QuestionView',
-    components: { 
+    components: {
         QuestionItem
     }
 }

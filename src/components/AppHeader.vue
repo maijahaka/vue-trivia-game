@@ -6,10 +6,13 @@
 
 <script>
 export default {
-  name: 'AppHeader',
-  props: {
-    title: String
-  }
+    name: 'AppHeader',
+    props: {
+        title: {
+            type: String,
+            default: 'Vue Trivia Game'
+        }
+    }
 }
 </script>
 

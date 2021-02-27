@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header title="Vue Trivia Game"/>
+    <app-header title="Vue Trivia Game" />
     <router-view />
   </div>
 </template>
@@ -9,13 +9,14 @@
 import AppHeader from './components/AppHeader.vue'
 
 export default {
-  name: 'App',
-  components: {
-    AppHeader
-  },
-  mounted() {
-    this.$router.replace('/')
-  }
+    name: 'App',
+    components: {
+        AppHeader
+    },
+    mounted() {
+        // app starts from the root (i.e. StartView)
+        this.$router.replace('/')
+    }
 }
 </script>
 

@@ -19,12 +19,5 @@ export default new Vuex.Store({
             commit('setQuestionItems', response.data.results)
         }
     },
-    getters: {
-        numberOfQuestions: state => {
-            return state.questionItems.length
-        },
-        getQuestionItemByIndex: state => index => {
-            return state.questionItems[index]
-        }
-    }
+    getters: {}
 })

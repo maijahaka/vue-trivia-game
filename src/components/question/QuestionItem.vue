@@ -1,13 +1,13 @@
 <template>
   <div>
     <question :question="questionItem.question" />
-    <answer 
-      v-for="(answer, index) of answerOptions" 
-      :key="index" 
-      :answer="answer" 
+    <answer
+      v-for="(answer, index) of answerOptions"
+      :key="index"
+      :answer="answer"
       @selected-answer="handleAnswerSelected"
     />
-    <div>Question {{id}}/{{numberOfQuestions}}</div>
+    <div>Question {{ id }}/{{ numberOfQuestions }}</div>
   </div>
 </template>
 
@@ -15,43 +15,53 @@
 import _ from 'lodash'
 import Question from './Question'
 import Answer from './Answer.vue'
-import { mapGetters } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'QuestionItem',
-  components: {
-    Question,
-    Answer
-  },
-  computed: {
-    ...mapGetters(['numberOfQuestions']),
-    id() {
-      const { id } = this.$route.params
-      return id      
+    name: 'QuestionItem',
+    components: {
+        Question,
+        Answer
     },
-    questionItem() {
-        return this.$store.getters.getQuestionItemByIndex(this.id - 1)
-    },
-    answerOptions() {
-      if (this.questionItem.type === 'boolean') {
-        return ["True", "False"]
-      }
+    computed: {
+        ...mapState(['questionItems']),
+        numberOfQuestions() {
+            return this.questionItems.length
+        },
+        id() {
+            const { id } = this.$route.params
+            return id
+        },
+        questionItem() {
+            // question with id 1 is located in index 0 of the questionItems array, etc.
+            return this.questionItems[this.id - 1]
+        },
+        answerOptions() {
+            if (this.questionItem.type === 'boolean') {
+                return ['True', 'False']
+            }
 
-      let options = this.questionItem.incorrect_answers
-      options.push(this.questionItem.correct_answer)
-      return _.shuffle(options)
+            let options = this.questionItem.incorrect_answers
+            options.push(this.questionItem.correct_answer)
+            // show answer options in random order
+            return _.shuffle(options)
+        }
+    },
+    methods: {
+        handleAnswerSelected(answer) {
+            // store information of the selected answer in Vuex store
+            this.questionItem.selected_answer = answer
+            this.setQuestionItems(this.questionItems)
+            if (this.id < this.numberOfQuestions) {
+                // move on to the next question after answering the current question
+                this.$router.push(`/questions/${Number(this.id) + 1}`)
+            } else {
+                // show results after answering the final question
+                this.$router.push('/results')
+            }
+        },
+        ...mapMutations(['setQuestionItems'])
     }
-  },
-  methods: {
-    handleAnswerSelected(answer) {
-      this.questionItem.selectedAnswer = answer
-      if (this.id < this.numberOfQuestions) {
-        this.$router.push(`/questions/${Number(this.id) + 1}`)
-      } else {
-        this.$router.push('/results')
-      }
-    }
-  }
 }
 </script>
 

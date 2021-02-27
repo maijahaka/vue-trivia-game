@@ -8,15 +8,20 @@
         <th>Correct answer</th>
         <th>Your answer</th>
       </tr>
-      <tr v-for="(questionItem, index) of questionItems" :key=index>
-        <td>{{decode(questionItem.question)}}</td>
-        <td>{{decode(questionItem.correct_answer)}}</td>
-        <td>{{decode(questionItem.selectedAnswer)}}</td>
+      <tr
+        v-for="(questionItem, index) of questionItems"
+        :key="index"
+      >
+        <!--decode HTML encoded values received from the API-->
+        <td>{{ decode(questionItem.question) }}</td>
+        <td>{{ decode(questionItem.correct_answer) }}</td>
+        <td>{{ decode(questionItem.selected_answer) }}</td>
       </tr>
     </table>
-    <button @click="onPlayAgainClicked">Play again</button>
+    <button @click="onPlayAgainClicked">
+      Play again
+    </button>
   </div>
-  
 </template>
 
 <script>
@@ -44,7 +49,7 @@ export default {
             this.$router.push('/')
         },
         checkIfCorrect(questionItem) {
-            return questionItem.selectedAnswer === questionItem.correct_answer
+            return questionItem.selected_answer === questionItem.correct_answer
         },
         decode(text) {
             return decode(text)
