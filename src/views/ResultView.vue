@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Results</h2>
-    <div>Your score: {{ score }}</div>
+    <div>Your score: {{ score }}/{{ maxScore }}</div>
     <table>
       <tr>
         <th>Question</th>
@@ -42,6 +42,9 @@ export default {
         },
         score() {
             return this.correctAnswers * this.pointsPerCorrectAnswer
+        },
+        maxScore() {
+            return this.questionItems.length * this.pointsPerCorrectAnswer
         }
     },
     methods: {
