@@ -12,6 +12,9 @@ export default {
   name: 'App',
   components: {
     AppHeader
+  },
+  mounted() {
+    this.$router.replace('/')
   }
 }
 </script>
