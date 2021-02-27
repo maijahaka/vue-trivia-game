@@ -14,8 +14,8 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        async fetchQuestionItems({ commit }) {
-            const response = await axios.get('https://opentdb.com/api.php?amount=10&category=22&difficulty=easy')
+        async fetchQuestionItems({ commit }, url) {
+            const response = await axios.get(url)
             commit('setQuestionItems', response.data.results)
         }
     },
