@@ -1,7 +1,7 @@
 <template>
   <v-btn
     block
-    class="my-2"
+    class="my-2 text-wrap"
     @click="onAnswerClicked"
   >
     {{ decodedAnswer }}
@@ -34,5 +34,7 @@ export default {
 </script>
 
 <style>
-
+.v-btn {
+    display: inline-block !important;
+}
 </style>
