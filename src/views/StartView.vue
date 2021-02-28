@@ -1,18 +1,36 @@
 <template>
   <div>
-    <h3>Select difficulty:</h3>
-    <button @click="startGame(easyUrl)">
+    <v-card-title class="justify-center">
+      Select difficulty:
+    </v-card-title>
+    <v-btn
+      block
+      class="my-2"
+      @click="startGame(easyUrl)"
+    >
       Easy
-    </button>
-    <button @click="startGame(mediumUrl)">
+    </v-btn>
+    <v-btn
+      block
+      class="my-2"
+      @click="startGame(mediumUrl)"
+    >
       Medium
-    </button>
-    <button @click="startGame(hardUrl)">
+    </v-btn>
+    <v-btn
+      block
+      class="my-2"
+      @click="startGame(hardUrl)"
+    >
       Hard
-    </button>
-    <button @click="startGame(randomUrl)">
+    </v-btn>
+    <v-btn
+      block
+      class="my-2"
+      @click="startGame(randomUrl)"
+    >
       Random
-    </button>
+    </v-btn>
   </div>
 </template>
 

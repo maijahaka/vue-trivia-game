@@ -1,7 +1,11 @@
 <template>
-  <button @click="onAnswerClicked">
+  <v-btn
+    block
+    class="my-2"
+    @click="onAnswerClicked"
+  >
     {{ decodedAnswer }}
-  </button>
+  </v-btn>
 </template>
 
 <script>

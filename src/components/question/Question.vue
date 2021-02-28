@@ -1,5 +1,7 @@
 <template>
-  <h2>{{ decodedQuestion }}</h2>
+  <v-card-title class="justify-center">
+    {{ decodedQuestion }}
+  </v-card-title>
 </template>
 
 <script>

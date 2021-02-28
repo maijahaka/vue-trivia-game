@@ -1,8 +1,17 @@
 <template>
-  <div id="app">
-    <app-header title="Vue Trivia Game" />
-    <router-view />
-  </div>
+  <v-app>
+    <v-main>
+      <v-container
+        fluid
+        class="pa-sm-15 pt-5"
+      >
+        <app-header title="Geography Quiz" />
+        <v-card class="px-5 pb-5 justify-center">
+          <router-view />
+        </v-card>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
@@ -27,6 +36,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
+html { overflow-y: auto !important; }
 </style>

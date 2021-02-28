@@ -1,26 +1,34 @@
 <template>
   <div>
-    <h2>Results</h2>
-    <div>Your score: {{ score }}/{{ maxScore }}</div>
-    <table>
-      <tr>
-        <th>Question</th>
-        <th>Correct answer</th>
-        <th>Your answer</th>
-      </tr>
-      <tr
-        v-for="(questionItem, index) of questionItems"
-        :key="index"
-      >
-        <!--decode HTML encoded values received from the API-->
-        <td>{{ decode(questionItem.question) }}</td>
-        <td>{{ decode(questionItem.correct_answer) }}</td>
-        <td>{{ decode(questionItem.selected_answer) }}</td>
-      </tr>
-    </table>
-    <button @click="onPlayAgainClicked">
+    <v-card-title class="justify-center">
+      Results
+    </v-card-title>
+    <div class="font-weight-bold">
+      Your score: {{ score }}/{{ maxScore }}
+    </div>
+    <v-simple-table class="px-sm-5 pb-5">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Correct answer</th>
+          <th>Your answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(questionItem, index) of questionItems"
+          :key="index"
+        >
+          <!--decode HTML encoded values received from the API-->
+          <td>{{ decode(questionItem.question) }}</td>
+          <td>{{ decode(questionItem.correct_answer) }}</td>
+          <td>{{ decode(questionItem.selected_answer) }}</td>
+        </tr>
+      </tbody>
+    </v-simple-table>
+    <v-btn @click="onPlayAgainClicked">
       Play again
-    </button>
+    </v-btn>
   </div>
 </template>
 
@@ -62,5 +70,7 @@ export default {
 </script>
 
 <style>
-
+td {
+  text-align: left;
+}
 </style>

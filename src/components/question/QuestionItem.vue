@@ -7,7 +7,9 @@
       :answer="answer"
       @selected-answer="handleAnswerSelected"
     />
-    <div>Question {{ id }}/{{ numberOfQuestions }}</div>
+    <v-card-text class="pb-0">
+      Question {{ id }}/{{ numberOfQuestions }}
+    </v-card-text>
   </div>
 </template>
 
@@ -66,5 +68,7 @@ export default {
 </script>
 
 <style>
-
+.v-card__title {
+  word-break: normal !important;
+}
 </style>
