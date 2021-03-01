@@ -1,6 +1,18 @@
-module.exports.apiUrls = {
-    easy: 'https://opentdb.com/api.php?amount=10&category=22&difficulty=easy',
-    medium: 'https://opentdb.com/api.php?amount=10&category=22&difficulty=medium',
-    hard: 'https://opentdb.com/api.php?amount=10&category=22&difficulty=hard',
-    random: 'https://opentdb.com/api.php?amount=10&category=22'
-}
+module.exports.apiUrls = [
+    {
+        level: 'Easy',
+        url: 'https://opentdb.com/api.php?amount=10&category=22&difficulty=easy'
+    },
+    {
+        level: 'Medium',
+        url: 'https://opentdb.com/api.php?amount=10&category=22&difficulty=medium'
+    },
+    {
+        level: 'Hard',
+        url: 'https://opentdb.com/api.php?amount=10&category=22&difficulty=hard'
+    },
+    {
+        level: 'Random',
+        url: 'https://opentdb.com/api.php?amount=10&category=22'
+    }
+]

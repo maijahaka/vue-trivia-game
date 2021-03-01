@@ -3,33 +3,21 @@
     <v-card-title class="justify-center">
       Select difficulty:
     </v-card-title>
+    <v-progress-circular
+      v-if="loading"
+      indeterminate
+      :size="25"
+      :width="3"
+    />
     <v-btn
+      v-for="(levelUrl, index) of apiUrls"
+      v-else
+      :key="index"
       block
       class="my-2"
-      @click="startGame(easyUrl)"
+      @click="startGame(levelUrl.url)"
     >
-      Easy
-    </v-btn>
-    <v-btn
-      block
-      class="my-2"
-      @click="startGame(mediumUrl)"
-    >
-      Medium
-    </v-btn>
-    <v-btn
-      block
-      class="my-2"
-      @click="startGame(hardUrl)"
-    >
-      Hard
-    </v-btn>
-    <v-btn
-      block
-      class="my-2"
-      @click="startGame(randomUrl)"
-    >
-      Random
+      {{ levelUrl.level }}
     </v-btn>
   </div>
 </template>
@@ -42,14 +30,13 @@ export default {
     name: 'StartView',
     data() {
         return {
-            easyUrl: apiUrls.easy,
-            mediumUrl: apiUrls.medium,
-            hardUrl: apiUrls.hard,
-            randomUrl: apiUrls.random
+            apiUrls: apiUrls,
+            loading: false
         }
     },
     methods: {
         async startGame(url) {
+            this.loading = true
             // fetch questions from the API
             await this.fetchQuestionItems(url)
             // move to the first question
