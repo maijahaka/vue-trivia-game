@@ -15,8 +15,15 @@ export default new Vuex.Store({
     },
     actions: {
         async fetchQuestionItems({ commit }, url) {
-            const response = await axios.get(url)
-            commit('setQuestionItems', response.data.results)
+            try {
+                const response = await axios.get(url)
+                if (response.data.response_code !== 0) {
+                    throw new Error(`API responded with response code ${response.data.response_code}`)
+                }
+                commit('setQuestionItems', response.data.results)
+            } catch (error) {
+                throw new Error(`Data was not retrieved successfully: ${error.message}.`)
+            }
         }
     },
     getters: {}

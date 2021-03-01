@@ -1,5 +1,12 @@
 <template>
   <div>
+    <!--show an error message if data is not retrieved successfully-->
+    <v-alert
+      v-if="error"
+      type="error"
+    >
+      The questions were not retrieved successfully. Please try again later.
+    </v-alert>
     <v-card-title class="justify-center">
       Select difficulty:
     </v-card-title>
@@ -12,7 +19,7 @@
     />
     <!--show a button for each difficulty level-->
     <v-btn
-      v-for="(levelUrl, index) of apiUrls"
+      v-for="(levelUrl, index) of apiLevelUrls"
       v-else
       :key="index"
       block
@@ -26,23 +33,30 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { apiUrls } from '../../utils/api'
+import { apiLevelUrls } from '../../utils/api'
 
 export default {
     name: 'StartView',
     data() {
         return {
-            apiUrls,
-            loading: false
+            apiLevelUrls,
+            loading: false,
+            error: false
         }
     },
     methods: {
         async startGame(url) {
-            this.loading = true
-            // fetch questions from the API
-            await this.fetchQuestionItems(url)
-            // move to the first question
-            this.$router.push('/questions/1')
+            try {
+                this.loading = true
+                // fetch questions from the API
+                await this.fetchQuestionItems(url)
+                // move to the first question
+                this.$router.push('/questions/1')
+            } catch (error) {
+                this.error = true
+            } finally {
+                this.loading = false
+            }
         },
         ...mapActions(['fetchQuestionItems'])
     }

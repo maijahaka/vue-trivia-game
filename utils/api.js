@@ -1,4 +1,4 @@
-module.exports.apiUrls = [
+module.exports.apiLevelUrls = [
     {
         level: 'Easy',
         url: 'https://opentdb.com/api.php?amount=10&category=22&difficulty=easy'
