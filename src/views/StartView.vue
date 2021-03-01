@@ -3,12 +3,14 @@
     <v-card-title class="justify-center">
       Select difficulty:
     </v-card-title>
+    <!--show loading animation while loading content from the API-->
     <v-progress-circular
       v-if="loading"
       indeterminate
       :size="25"
       :width="3"
     />
+    <!--show a button for each difficulty level-->
     <v-btn
       v-for="(levelUrl, index) of apiUrls"
       v-else
@@ -30,7 +32,7 @@ export default {
     name: 'StartView',
     data() {
         return {
-            apiUrls: apiUrls,
+            apiUrls,
             loading: false
         }
     },
