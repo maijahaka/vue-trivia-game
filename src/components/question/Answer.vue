@@ -38,7 +38,7 @@ export default {
     display: inline-block !important;
 }
 
-.v-btn:focus:before {
-    opacity: 0 !important;
+.v-btn:focus::before {
+    background-color: white !important;
 }
 </style>
