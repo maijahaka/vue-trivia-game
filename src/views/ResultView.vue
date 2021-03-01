@@ -3,10 +3,13 @@
     <v-card-title class="justify-center">
       Results
     </v-card-title>
-    <div class="font-weight-bold">
+    <div
+      id="score"
+      class="font-weight-bold"
+    >
       Your score: {{ score }}/{{ maxScore }}
     </div>
-    <v-simple-table class="px-sm-5 pb-5">
+    <v-simple-table class="px-sm-5 mb-5">
       <thead>
         <tr>
           <th>Question</th>
@@ -72,5 +75,9 @@ export default {
 <style>
 td {
   text-align: left;
+}
+
+#score {
+  color: #0097A7;
 }
 </style>

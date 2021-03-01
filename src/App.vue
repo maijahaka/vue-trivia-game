@@ -30,8 +30,9 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -39,4 +40,18 @@ export default {
 }
 
 html { overflow-y: auto !important; }
+
+.v-sheet {
+  background-image: linear-gradient(white, #E0F7FA, #B2EBF2) !important;
+}
+
+.v-btn {
+  background-color: white !important;
+  text-transform: capitalize !important;
+  font-weight: bold !important;
+}
+
+.v-btn:hover {
+  background-color: #B2EBF2 !important;
+}
 </style>

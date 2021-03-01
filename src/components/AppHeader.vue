@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-5 text-sm-h3 text-h4 font-weight-black">
+  <div class="pb-5 font-weight-black">
     {{ title }}
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+div {
+  color: #0097A7;
+  font-size: xx-large;
+}
 </style>
