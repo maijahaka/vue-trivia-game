@@ -9,7 +9,7 @@
     >
       Your score: {{ score }}/{{ maxScore }}
     </div>
-    <v-simple-table class="px-sm-5 mb-5">
+    <v-simple-table class="px-sm-5 my-5">
       <thead>
         <tr>
           <th>Question</th>
